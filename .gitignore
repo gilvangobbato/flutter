@@ -1,0 +1,70 @@
+# Miscellaneous
+/contador_de_pessoas/*.class
+/contador_de_pessoas/*.log
+/contador_de_pessoas/*.pyc
+/contador_de_pessoas/*.swp
+/contador_de_pessoas/.DS_Store
+/contador_de_pessoas/.atom/
+/contador_de_pessoas/.buildlog/
+/contador_de_pessoas/.history
+/contador_de_pessoas/.svn/
+
+# IntelliJ related
+/contador_de_pessoas/*.iml
+/contador_de_pessoas/*.ipr
+/contador_de_pessoas/*.iws
+/contador_de_pessoas/.idea/
+
+# Visual Studio Code related
+/contador_de_pessoas/.vscode/
+
+# Flutter/Dart/Pub related
+/contador_de_pessoas/**/doc/api/
+/contador_de_pessoas/.dart_tool/
+/contador_de_pessoas/.flutter-plugins
+/contador_de_pessoas/.packages
+/contador_de_pessoas/.pub-cache/
+/contador_de_pessoas/.pub/
+/contador_de_pessoas/build/
+
+# Android related
+/contador_de_pessoas/**/android/**/gradle-wrapper.jar
+/contador_de_pessoas/**/android/.gradle
+/contador_de_pessoas/**/android/captures/
+/contador_de_pessoas/**/android/gradlew
+/contador_de_pessoas/**/android/gradlew.bat
+/contador_de_pessoas/**/android/local.properties
+/contador_de_pessoas/**/android/**/GeneratedPluginRegistrant.java
+
+# iOS/XCode related
+/contador_de_pessoas/**/ios/**/*.mode1v3
+/contador_de_pessoas/**/ios/**/*.mode2v3
+/contador_de_pessoas/**/ios/**/*.moved-aside
+/contador_de_pessoas/**/ios/**/*.pbxuser
+/contador_de_pessoas/**/ios/**/*.perspectivev3
+/contador_de_pessoas/**/ios/**/*sync/
+/contador_de_pessoas/**/ios/**/.sconsign.dblite
+/contador_de_pessoas/**/ios/**/.tags*
+/contador_de_pessoas/**/ios/**/.vagrant/
+/contador_de_pessoas/**/ios/**/DerivedData/
+/contador_de_pessoas/**/ios/**/Icon?
+/contador_de_pessoas/**/ios/**/Pods/
+/contador_de_pessoas/**/ios/**/.symlinks/
+/contador_de_pessoas/**/ios/**/profile
+/contador_de_pessoas/**/ios/**/xcuserdata
+/contador_de_pessoas/**/ios/.generated/
+/contador_de_pessoas/**/ios/Flutter/App.framework
+/contador_de_pessoas/**/ios/Flutter/Flutter.framework
+/contador_de_pessoas/**/ios/Flutter/Generated.xcconfig
+/contador_de_pessoas/**/ios/Flutter/app.flx
+/contador_de_pessoas/**/ios/Flutter/app.zip
+/contador_de_pessoas/**/ios/Flutter/flutter_assets/
+/contador_de_pessoas/**/ios/ServiceDefinitions.json
+/contador_de_pessoas/**/ios/Runner/GeneratedPluginRegistrant.*
+
+# Exceptions to above rules.
+!/contador_de_pessoas/**/ios/**/default.mode1v3
+!/contador_de_pessoas/**/ios/**/default.mode2v3
+!/contador_de_pessoas/**/ios/**/default.pbxuser
+!/contador_de_pessoas/**/ios/**/default.perspectivev3
+!/contador_de_pessoas/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
