@@ -12,11 +12,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _people = 0;
   String _infoText = "Pode Entrar";
-
   void _changePeople(int delta) {
     setState(() {
       _people += delta;
-
       if (_people < 0) {
         _infoText = "Ação não permitida";
         _people = 0;
