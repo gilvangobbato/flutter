@@ -4,12 +4,16 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
-const request = "https://api.hgbrasil.com/finance/quotations?format=json&key=71d8957d";
+const request =
+    "https://api.hgbrasil.com/finance/quotations?format=json&key=71d8957d";
 
 void main() async {
   runApp(MaterialApp(
-    title: "Conversor de moedas",
     home: Home(),
+    theme: ThemeData(
+        hintColor: Colors.amber,
+        primaryColor: Colors.white
+    ),
   ));
 }
 
@@ -26,9 +30,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  double dollar = 1.0;
-  double euro = 1.0;
-  double brl = 1.0;
+  double dollar;
+  double euro;
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +53,7 @@ class _HomeState extends State<Home> {
               if (snapshot.hasError) {
                 return mensagemErro("Erro carregando dados.");
               } else {
-                dollar = snapshot.data["results"]["currencies"]["USD"]["buy"];
-                euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
-                brl = snapshot.data["results"]["currencies"]["BRL"]["buy"];
-                return leiauteTela();
+                return leiauteTela(snapshot);
               }
           }
         },
@@ -61,12 +61,60 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget leiauteTela() {
+  Widget leiauteTela(snapshot) {
+    dollar = snapshot.data["results"]["currencies"]["USD"]["buy"];
+    euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
     return SingleChildScrollView(
+      padding: EdgeInsets.all(10.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Icon(Icons.monetization_on, size: 150.0, color: Colors.amber,)
+          Icon(
+            Icons.monetization_on,
+            size: 150.0,
+            color: Colors.amber,
+          ),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Real",
+              labelStyle: TextStyle(
+                color: Colors.amber,
+              ),
+              border: OutlineInputBorder(),
+              prefixText: "R\$",
+            ),
+            style: TextStyle(
+                color: Colors.amber,
+                fontSize: 25.0),
+          ),
+          Divider(),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Dólar",
+              labelStyle: TextStyle(
+                color: Colors.amber,
+              ),
+              border: OutlineInputBorder(),
+              prefixText: "US\$",
+            ),
+            style: TextStyle(
+                color: Colors.amber,
+                fontSize: 25.0),
+          ),
+          Divider(),
+          TextField(
+            decoration: InputDecoration(
+              labelText: "Euro",
+              labelStyle: TextStyle(
+                color: Colors.amber,
+              ),
+              border: OutlineInputBorder(),
+              prefixText: "€",
+            ),
+            style: TextStyle(
+                color: Colors.amber,
+                fontSize: 25.0),
+          )
         ],
       ),
     );
