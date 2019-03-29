@@ -31,7 +31,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   double dollar;
   double euro;
-  double clp;
+  double clp = 0.0070;
   final realController = TextEditingController();
   final dollarController = TextEditingController();
   final euroController = TextEditingController();
@@ -42,30 +42,30 @@ class _HomeState extends State<Home> {
     double real = double.parse(text);
     double totDollar = real / dollar;
     double totEuro = real / euro;
-//    double clp = real / this.clp;
+    double clp = real / this.clp;
     dollarController.text = totDollar.toStringAsFixed(2);
     euroController.text = totEuro.toStringAsFixed(2);
-//    clpController.text = clp.toStringAsFixed(2);
+    clpController.text = clp.toStringAsFixed(2);
   }
 
   void _dolarChanged(String text){
     double dollar = double.parse(text);
     double real = dollar * this.dollar;
     double euro = (dollar * this.dollar) / this.euro;
-//    double clp = real / this.clp;
+    double clp = real / this.clp;
     realController.text = real.toStringAsFixed(2);
     euroController.text = euro.toStringAsFixed(2);
-//    clpController.text = clp.toStringAsFixed(2);
+    clpController.text = clp.toStringAsFixed(2);
   }
 
   void _euroChanged(String text){
     double euro = double.parse(text);
     double real = euro * this.euro;
     double dollar = real / this.dollar;
-//    double clp = real / this.clp;
+    double clp = real / this.clp;
     dollarController.text = dollar.toStringAsFixed(2);
     realController.text = real.toStringAsFixed(2);
-//    clpController.text = clp.toStringAsFixed(2);
+    clpController.text = clp.toStringAsFixed(2);
   }
 
   void _clpChanged(String text){
@@ -122,8 +122,8 @@ class _HomeState extends State<Home> {
           ),
           buildTextField("Real", "R\$", realController, _realChanged),
           Divider(),
-//          buildTextField("Peso Chileno", "\$", clpController, _clpChanged),
-//          Divider(),
+          buildTextField("Peso Chileno", "\$", clpController, _clpChanged),
+          Divider(),
           buildTextField("Dólar", "\$", dollarController, _dolarChanged),
           Divider(),
           buildTextField("Euro", "€", euroController, _euroChanged),
