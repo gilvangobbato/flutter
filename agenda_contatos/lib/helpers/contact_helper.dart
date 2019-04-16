@@ -36,8 +36,7 @@ class ContactHelper {
           "$nameColumn TEXT, "
           "$emailColumn TEXT, "
           "$phoneColumn TEXT, "
-          "$imgColumn TEXT)"
-      );
+          "$imgColumn TEXT)");
     });
   }
 
@@ -103,6 +102,8 @@ class Contact {
   String phone;
   String img;
 
+  Contact();
+
   Contact.fromMap(Map map) {
     id = map[idColumn];
     name = map[nameColumn];
@@ -121,6 +122,7 @@ class Contact {
     if (id != null) {
       map[idColumn] = id;
     }
+    return map;
   }
 
   @override
