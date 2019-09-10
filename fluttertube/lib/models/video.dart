@@ -22,6 +22,6 @@ class Video {
   }
 
   Map<String, dynamic> toJson() {
-    return {"videoId": id, "title": title, "thumb": thumb, "channel": channel};
+    return {"id": id, "title": title, "thumb": thumb, "channel": channel};
   }
 }
