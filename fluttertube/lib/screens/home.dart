@@ -1,7 +1,9 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertube/blocs/favoritos_bloc.dart';
 import 'package:fluttertube/blocs/vidoes_bloc.dart';
 import 'package:fluttertube/delegates/data.search.dart';
+import 'package:fluttertube/models/video.dart';
 import 'package:fluttertube/widgets/video_tile.dart';
 
 class Home extends StatelessWidget {
@@ -14,18 +16,28 @@ class Home extends StatelessWidget {
           child: Image.asset("images/youtube-logo.png"),
         ),
         elevation: 0,
-        backgroundColor: Colors.black38,
+        backgroundColor: Colors.black45,
         actions: <Widget>[
           Align(
             alignment: Alignment.center,
-            child: Text("0"),
+            child: StreamBuilder<Map<String, Video>>(
+              stream: BlocProvider.getBloc<FavoriteBloc>().outFav,
+              builder: (context, snapshot) {
+                return Text(
+                  (!snapshot.hasData ? "0" : snapshot.data.length.toString()),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                );
+              },
+            ),
           ),
           IconButton(
             icon: Icon(Icons.star),
+            iconSize: 30,
             onPressed: () {},
           ),
           IconButton(
             icon: Icon(Icons.search),
+            iconSize: 30,
             onPressed: () async {
               String result =
                   await showSearch(context: context, delegate: DataSearch());
@@ -37,6 +49,7 @@ class Home extends StatelessWidget {
       ),
       body: StreamBuilder(
         stream: BlocProvider.getBloc<VideosBloc>().outVideos,
+        initialData: [],
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(
@@ -45,16 +58,19 @@ class Home extends StatelessWidget {
                   return VideoTile(
                     video: snapshot.data[index],
                   );
+                } else if (index > 1) {
+                  BlocProvider.getBloc<VideosBloc>().inSearch.add(null);
+                  return Container(
+                    height: 40,
+                    width: 40,
+                    alignment: Alignment.center,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+                    ),
+                  );
+                } else {
+                  return Container();
                 }
-                BlocProvider.getBloc<VideosBloc>().inSearch.add(null);
-                return Container(
-                  height: 40,
-                  width: 40,
-                  alignment: Alignment.center,
-                  child: CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
-                  ),
-                );
               },
               itemCount: snapshot.data.length + 1,
             );
