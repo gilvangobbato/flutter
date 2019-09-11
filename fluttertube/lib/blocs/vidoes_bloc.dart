@@ -33,7 +33,7 @@ class VideosBloc implements BlocBase {
   void addListener(listener) {}
 
   @override
-  bool get hasListeners => null;
+  bool get hasListeners => _searchController.hasListener;
 
   @override
   void notifyListeners() {}
