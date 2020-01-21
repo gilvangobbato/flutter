@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertube/api.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:fluttertube/blocs/favoritos_bloc.dart';
 import 'package:fluttertube/blocs/vidoes_bloc.dart';
@@ -7,8 +6,6 @@ import 'package:fluttertube/blocs/vidoes_bloc.dart';
 import 'screens/home.dart';
 
 void main() {
-  Api api = Api();
-  api.search("beagle");
   runApp(MyApp());
 }
 
